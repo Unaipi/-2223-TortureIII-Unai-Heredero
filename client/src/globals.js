@@ -8,5 +8,12 @@ export default {
 	buttonStart: {},
 
 
-	arrayPotions: []
+	arrayPotions: [],
+	arrayImages: [],
+
+
+	assetsLoaded: 0,
+
+	assetsToLoad: []
+
 }

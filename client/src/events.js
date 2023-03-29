@@ -1,6 +1,6 @@
 
 import globals from "./globals.js"
-
+import {loadAssets} from "./initialize.js"
 export function btnStartDown()
 {
 
@@ -19,11 +19,14 @@ export function btnStartDown()
             {
                 if (this.responseText != null)
                 {
-                    //console.log(this.responseText);
+
                     const resultJSON = JSON.parse(this.responseText);
-                    globals.arrayPotions = resultJSON;
-                    
+                    globals.arrayPotions = resultJSON; 
                     console.log(resultJSON)
+
+                    loadAssets();
+
+
                 }
                 else
                     alert("Communication error: No data received");
