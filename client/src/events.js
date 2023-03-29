@@ -46,6 +46,111 @@ request.send();
 
 }
 
+export function btnCreateDown()
+{
+  
+    document.getElementById('btnCreatePotion').style.display = "none";
+
+    addIngredientsToFusionArray();
+    compareIngredients();
+    showFusion();
+
+}
+
+function addIngredientsToFusionArray()
+{
+    let randomIngredient1 = Math.floor(Math.random() * (3));;
+    let randomIngredient2 = 0;
+
+    while(randomIngredient1 == randomIngredient2)
+    {
+        randomIngredient2 = Math.floor(Math.random() * (3));
+    }
+    globals.arrayIngredientFusion.push(globals.arrayRandomIngredient[randomIngredient1])
+    globals.arrayIngredientFusion.push(globals.arrayRandomIngredient[randomIngredient2])
+
+    console.log(globals.arrayIngredientFusion)
+}
+
+
+function compareIngredients()
+{
+    
+    for(let i = 0; i<4 ; i++)
+    {
+        console.log(globals.arrayIngredientFusion[0].effects[i])
+        console.log(globals.arrayIngredientFusion[1].effects[i])
+
+            if(globals.arrayIngredientFusion[0].effects[0] === globals.arrayIngredientFusion[1].effects[i]) 
+            {
+                globals.synergyCount++
+                console.log(globals.synergyCount)
+                globals.repeatedEffect = globals.arrayIngredientFusion[0].effects[0];
+            }
+            if(globals.arrayIngredientFusion[0].effects[1] === globals.arrayIngredientFusion[1].effects[i])
+            {
+                globals.synergyCount++
+                console.log(globals.synergyCount)
+                globals.repeatedEffect = globals.arrayIngredientFusion[0].effects[1];
+            }
+            if(globals.arrayIngredientFusion[0].effects[2] === globals.arrayIngredientFusion[1].effects[i])
+            {
+                globals.synergyCount++
+                console.log(globals.synergyCount)
+                globals.repeatedEffect = globals.arrayIngredientFusion[0].effects[2];
+            }
+            if(globals.arrayIngredientFusion[0].effects[3] === globals.arrayIngredientFusion[1].effects[i])
+            {
+                globals.synergyCount++
+                console.log(globals.synergyCount)
+                globals.repeatedEffect = globals.arrayIngredientFusion[0].effects[3];
+            }  
+    }
+}
+
+
+function showFusion()
+{
+    document.getElementById('sectionFase3').style.display = "block";
+
+    let weight1 = parseFloat(globals.arrayIngredientFusion[0].weight);
+    let weight2 = parseFloat(globals.arrayIngredientFusion[1].weight);
+    let weightSuma = ( weight1 + weight2 ) + 1.2
+    console.log(weightSuma)
+
+    if(globals.synergyCount == 1)
+    {
+        let fsn = document.getElementById("fsn");
+        fsn.innerHTML +="<h2>"+globals.arrayIngredientFusion[0].name+"</h2>";
+        fsn.innerHTML +="<h2>+</h2>";
+        fsn.innerHTML +="<h2>"+globals.arrayIngredientFusion[1].name+"</h2>";
+
+
+        fsn.innerHTML +="<h3>Potion of "+globals.repeatedEffect+"</h3>";
+
+        fsn.innerHTML +="<h3>Weight: "+weightSuma+"</h3>";
+
+        
+        
+    }
+    else if (globals.synergyCount>1)
+    {
+        let fsn = document.getElementById("fsn");
+        fsn.innerHTML +="<h2>"+globals.arrayIngredientFusion[0].name+"</h2>";
+        fsn.innerHTML +="<h2>+</h2>";
+        fsn.innerHTML +="<h2>"+globals.arrayIngredientFusion[1].name+"</h2>";
+
+
+        fsn.innerHTML +="<h3>Potion of "+globals.repeatedEffect+"</h3>";
+
+        fsn.innerHTML +="<h3>Weight: "+weightSuma+"</h3>";
+    }
+    else if (globals.synergyCount<1)
+    {
+        let fsn = document.getElementById("fsn");
+        fsn.innerHTML +="<h2>POTION FAILED!!</h2>";
+    }
+}
 
 function randomIngredient()
 {
@@ -53,9 +158,9 @@ function randomIngredient()
     {
         let random = Math.floor(Math.random() * (globals.arrayPotions.ingredients.length));
         globals.arrayRandomIngredient.push(globals.arrayPotions.ingredients[random]); 
-        console.log(globals.arrayRandomIngredient)
+        
     }
-    
+    console.log(globals.arrayRandomIngredient)
 }
 
 function showIngredients()
@@ -123,8 +228,6 @@ function showIngredients()
     col4.innerHTML +="<li>"+globals.arrayRandomIngredient[3].effects[2]+"</li>";
     col4.innerHTML +="<li>"+globals.arrayRandomIngredient[3].effects[3]+"</li>";
 
-
-    
 
 }
     

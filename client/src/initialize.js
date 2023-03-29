@@ -1,5 +1,5 @@
 import globals from "./globals.js";
-import {btnStartDown} from "./events.js";
+import {btnStartDown, btnCreateDown} from "./events.js";
 import { Fases } from "./constants.js";
 
 
@@ -20,7 +20,7 @@ function init()
 function initHTMLelements()
 {
     globals.buttonStart = document.getElementById('btnStart');
-
+    globals.buttonCreatePotion= document.getElementById('btnCreatePotion');
     globals.sectionFase1 = document.getElementById('sectionFase1');
     globals.sectionFase2 = document.getElementById('sectionFase2');
     globals.sectionFase3 = document.getElementById('sectionFase3');
@@ -31,7 +31,7 @@ function initHTMLelements()
 function initEvents()
 {
     globals.buttonStart.addEventListener("mousedown", btnStartDown, false);
-    //globals.buttonStart.addEventListener("mousedown", btnStartDown, false);
+    globals.buttonCreatePotion.addEventListener("mousedown", btnCreateDown, false);
 }
 
 export function loadAssets()

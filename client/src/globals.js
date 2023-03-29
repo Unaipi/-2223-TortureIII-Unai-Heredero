@@ -8,15 +8,19 @@ export default {
 
 
 	buttonStart: {},
+	buttonCreatePotion: {},
 
 
 	arrayPotions: [],
 	arrayImages: [],
 	arrayRandomIngredient: [],
+	arrayIngredientFusion: [],
+	repeatedEffect: "",
+
+	synergyCount: 0,
 
 
 	assetsLoaded: 0,
-
 	assetsToLoad: [],
 
 
