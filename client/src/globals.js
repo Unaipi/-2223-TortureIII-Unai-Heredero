@@ -5,5 +5,8 @@ export default {
 
 
 
-	buttonStart: {}
+	buttonStart: {},
+
+
+	arrayPotions: []
 }
