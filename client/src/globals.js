@@ -1,3 +1,5 @@
+import { Fases } from "./constants.js";
+
 export default {
 	sectionFase1:{},
 	sectionFase2: {},
@@ -10,10 +12,14 @@ export default {
 
 	arrayPotions: [],
 	arrayImages: [],
+	arrayRandomIngredient: [],
 
 
 	assetsLoaded: 0,
 
-	assetsToLoad: []
+	assetsToLoad: [],
+
+
+	faseState: Fases.FASE1,
 
 }

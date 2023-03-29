@@ -1,5 +1,6 @@
 import globals from "./globals.js";
 import {btnStartDown} from "./events.js";
+import { Fases } from "./constants.js";
 
 
 window.onload = init()
@@ -9,8 +10,10 @@ function init()
     console.log("INIT")
     initHTMLelements();
     initEvents();
-
+    initVars();
     
+    globals.faseState = Fases.FASE1;
+    console.log(globals.faseState)
 }
 
 
@@ -22,10 +25,6 @@ function initHTMLelements()
     globals.sectionFase2 = document.getElementById('sectionFase2');
     globals.sectionFase3 = document.getElementById('sectionFase3');
 
-
-    globals.sectionFase1.style.display = "block";
-    globals.sectionFase2.style.display = "none";
-    globals.sectionFase3.style.display = "none";
    
 }
 
@@ -40,6 +39,14 @@ export function loadAssets()
     console.log("loadAssets");
 
     loadImages();
+}
+
+export function initVars( )
+{
+    // globals.previousCycleMilliseconds = 0;
+    // globals.deltaTime = 0;
+    // globals.frameTimeObj = 1 / FPS;  
+
 }
 
 function loadHandler()
